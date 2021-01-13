@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="\css\styles.css">
+    <title></title>
+  </head>
+  <body>
+    <!-- creating div with class box and id div. it will be heading thats why we
+  seperate it from other box containers -->
+    <div class="box" id='heading'>
+      <!-- ejs marker. This marker will tell file to replace whatever is inside
+      that var name with value that we will pass -->
+      <h1> <%=listName %></h1>
+    </div>
+    <!-- place all our body in other box, size of it depends on how many
+  content we add -->
+    <div class="box">
+      <!-- when we press submit button it it will make POST request to HOME route -->
+      <ul>
+        <!-- for loop to add all items from list that we provide
+      < ejs marker. we have to provide this var a value %>-->
+        <%newListItems.forEach(function(item){%>
+          <!--looping through each item of newListItem array of documents -->
+          <div class="item">
+    <!--when checkbox will be checked, it will post this form to delete route
+    and we will basically pass item.id and listName from which we want tp delete document  -->
+            <form action="/delete" method="post">
+  <!--we set value to item.id value, we give name to acces it, on change we submit
+  this form -->
+              <input type="checkbox" name="checkbox" value="<%=item._id%>" onchange="this.form.submit()">
+              <input type="hidden" name="listName" value="<%=listName%>"></input>
+            </form>
+            <!--we can acces each document through item. we can easely tap into fields and
+          its values, by writing .nameOfField -->
+            <p><%=item.name%></p>
+          </div>
+
+        <%})%>
+      </ul>
+
+      <form  action="/" method="post">
+        <input type="text" name="newItem" placeholder="Add item to Todo List">
+        <button type="submit" name="button" value="<%=listName%>">+</button>
+        <!--when submit it will submit this form which has input text, and we
+      submit button value which is listNAME  -->
+      </form>
+    </div>
+
+
+
+
+  </body>
+</html>
