@@ -17,8 +17,10 @@ app.set('view engine', 'ejs');//set view engine to use ejs
 //specify how to connect to MongoDB and which database we want to create
 //or connect to. We are conneting to url where our MongoDB
 //is hosted which is mongodb://localhost:27017
-mongoose.connect('mongodb://localhost:27017/todolistDB', {useNewUrlParser: true, useUnifiedTopology: true});
-
+mongoose.connect('mongodb+srv://admin-lukas:Test123@cluster0.rz3xq.mongodb.net/todolistDB?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+//we will connect to MongoDb atlas server. we will conenct to MongoDB cluster.
+//to save our data in Cloud in mongoAtlas. replace everything other than last part where
+//creating database todolistDB
 
 //this schema scaffold out how we want data in particular collection to be structured
 const itemsSchema = {//it will have field name which is type of string
